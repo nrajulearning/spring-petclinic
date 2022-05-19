@@ -1,19 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        label 'build_java_11'
+    }
     triggers{
-        // Triggers pipeline for every commit on git repo
+        // Triggers pipeline for every 1hr
         pollSCM '0 * * * *'
     }
    
     stages {
-        stage('Stage 1'){
-        agent {
-            label 'build_java_11'
-        }
+        stage('Build'){
         steps {
-            // Get some code from a GitHub repository
-            git branch: 'declarative', credentialsId: 'nrajulearning', url: 'https://github.com/nrajulearning/spring-petclinic.git'
-
             // Run Maven on a Unix agent.
             sh "mvn clean package"
 
