@@ -2,13 +2,13 @@ pipeline {
     agent any
     triggers{
         // Triggers pipeline for every commit on git repo
-        pollSCM '* * * * *'
+        pollSCM '0 * * * *'
     }
    
     stages {
         stage('Stage 1'){
         agent {
-            label 'JDK11'
+            label 'build_java_11'
         }
         steps {
             // Get some code from a GitHub repository
