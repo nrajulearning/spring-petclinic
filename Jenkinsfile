@@ -11,6 +11,6 @@ node('build_java_11') {
     } 
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
-        archiveArtifacts '**/target/*.war'
+        archiveArtifacts '**/target/*.jar'
     }
 }
