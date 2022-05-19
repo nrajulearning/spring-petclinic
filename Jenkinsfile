@@ -12,7 +12,7 @@ pipeline {
         }
         steps {
             // Get some code from a GitHub repository
-            git branch: 'main', credentialsId: 'nrajulearning', url: 'https://github.com/nrajulearning/spring-petclinic.git'
+            git branch: 'declarative', credentialsId: 'nrajulearning', url: 'https://github.com/nrajulearning/spring-petclinic.git'
 
             // Run Maven on a Unix agent.
             sh "mvn clean package"
