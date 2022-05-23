@@ -4,14 +4,15 @@ pipeline {
     }
     triggers{
         // Triggers pipeline for every 1hr
-        cron '0 * * * *'
+        POLLSCM '0 * * * *'
     }
    
     stages {
-        stage('Build'){
+        stage('Build the code and sonarqube-analysis'){
         steps {
-            // Run Maven on a Unix agent.
-            sh "mvn clean package"
+            withSonarQubeEnv('sonar-9.4.0') {
+                 sh 'mvn clean package sonar:sonar'
+              }
 
             }
         }
