@@ -4,7 +4,7 @@ pipeline {
     }
     triggers{
         // Triggers pipeline for every 1hr
-        pollSCM '0 * * * *'
+        cron '0 * * * *'
     }
    
     stages {
