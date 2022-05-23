@@ -4,7 +4,7 @@ node('build_java_11') {
         git branch: 'scripted', credentialsId: '04ea13ae-ce7c-4bc6-b5f0-c222ad85c12d', url: 'https://github.com/nrajulearning/spring-petclinic.git'
     }
     stage ('build_trigger'){
-        properties([pipelineTriggers([pollSCM('0 * * * * ')])])
+        properties([pipelineTriggers([cron('0 * * * * ')])])
     }
     stage ('build'){
         sh 'mvn clean package'
